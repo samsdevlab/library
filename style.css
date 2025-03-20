@@ -98,3 +98,61 @@ button,
 select {
   font: inherit;
 }
+
+@font-face {
+  font-family: "Audiowide";
+  src: url("./fonts/Audiowide-Regular.woff2") format("woff2"),
+    url("./fonts/Audiowide-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Exo";
+  src: url("./fonts/Exo-Regular.woff2") format("woff2"),
+    url("./fonts/Exo-Regular.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  /* font-display: swap; */
+}
+
+/* 
+Oh, now that’s a cool direction! If you’re going for a Minority Report-inspired futuristic library, you’ll want a sleek but high-energy cyber-tech feel—something that’s clean but not sterile.
+
+Here’s a color palette idea based on that:
+
+Electric Cyan – #00FFFF (glowing neon interface elements)
+Deep Navy Blue – #0A1F44 (cool, high-tech backdrop)
+Dark Charcoal Gray – #1C1C1C (futuristic base tone)
+Holographic Silver – #C0C0C0 (reflective, high-tech sheen)
+Pulsing Magenta – #FF007F (vibrant contrast, like neon UI elements)
+*/
+
+body {
+  background-color: #0a1f44;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h1,
+h2 {
+  font-family: "Audiowide";
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr;
+}
+
+aside {
+  background-color: #c0c0c0;
+}
