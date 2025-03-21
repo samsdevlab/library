@@ -127,6 +127,11 @@ Deep Navy Blue – #0A1F44 (cool, high-tech backdrop)
 Dark Charcoal Gray – #1C1C1C (futuristic base tone)
 Holographic Silver – #C0C0C0 (reflective, high-tech sheen)
 Pulsing Magenta – #FF007F (vibrant contrast, like neon UI elements)
+
+Header: Dark Charcoal Gray (#1C1C1C) → Solid, grounded foundation for the title
+Main Content: Deep Navy Blue (#0A1F44) → Still dark but slightly different for contrast
+Text & UI Accents: Electric Cyan & Pulsing Magenta → Pop against the dark backgrounds
+Borders/Dividers: Holographic Silver → Subtle sheen without overpowering
 */
 
 body {
@@ -134,25 +139,33 @@ body {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 h1,
 h2 {
+  color: #00ffff;
   font-family: "Audiowide";
+  text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 20px #ff007f,
+    0 0 40px #ff007f;
 }
 
 h2 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 .container {
   height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr;
+  display: flex;
+  flex-direction: column;
 }
 
-aside {
-  background-color: #c0c0c0;
+header {
+  background-color: #1c1c1c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
+  box-shadow: 0 3px 10px #c0c0c0;
 }
