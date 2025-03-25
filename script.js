@@ -16,7 +16,6 @@ function Book(title, author, pageCount, completionStatus, image) {
   this.id = crypto.randomUUID();
 }
 
-
 // Create and Store Book
 function addBookToLibrary(title, author, pageCount, completionStatus, image) {
   // take params, create a book then store it in the array
@@ -24,17 +23,15 @@ function addBookToLibrary(title, author, pageCount, completionStatus, image) {
   myLibrary.push(newBook);
 }
 
-
 // Display Books - Loop Through Array
 function displayBooks(myLibraryArr) {
-  const main = document.querySelector(".main")
-  myLibraryArr.forEach(book => {
-   
+  const main = document.querySelector(".main");
+  myLibraryArr.forEach((book) => {
     // Create container divs
     const div = document.createElement("div");
     div.classList.add("cards");
 
-    // Add image to divs    
+    // Add image to divs
     const image = document.createElement("img");
     image.src = book.image;
     div.appendChild(image);
@@ -54,21 +51,47 @@ function displayBooks(myLibraryArr) {
 
     const pageCountLi = document.createElement("li");
     pageCountLi.innerText = book.pageCount;
-  
+
     div.appendChild(textCards);
-    textCards.appendChild(ul)
+    textCards.appendChild(ul);
     ul.appendChild(titleLi);
     ul.appendChild(authorLi);
     ul.appendChild(pageCountLi);
 
     // Append Main
     main.appendChild(div);
-  })
+  });
 }
 
+// Interact with Dialog
+const dialog = document.querySelector("dialog");
+const addBookButton = document.querySelector(".add-book-button");
+
+addBookButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
 // Call Default Books
-addBookToLibrary("Brave New World", "Aldous Huxley", "288", "Read", "./images/brave-new-world-cover.jpg");
-addBookToLibrary("A Scanner Darkly", "Philip K. Dick", "304", "Unread", "./images/a-scanner-darkly.jpg");
-addBookToLibrary("1984", "George Orwell", "328", "Read", "./images/1984-cover.png");
+addBookToLibrary(
+  "Brave New World",
+  "Aldous Huxley",
+  "288",
+  "Read",
+  "./images/brave-new-world-cover.jpg"
+);
+addBookToLibrary(
+  "A Scanner Darkly",
+  "Philip K. Dick",
+  "304",
+  "Unread",
+  "./images/a-scanner-darkly.jpg"
+);
+addBookToLibrary(
+  "1984",
+  "George Orwell",
+  "328",
+  "Read",
+  "./images/1984-cover.png"
+);
 
 displayBooks(myLibrary);
