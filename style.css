@@ -114,7 +114,16 @@ select {
     url("./fonts/Exo-Regular.woff") format("woff");
   font-weight: 100;
   font-style: normal;
-  /* font-display: swap; */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Exo Bold";
+  src: url("./fonts/Exo-Bold.woff2") format("woff2"),
+    url("./fonts/Exo-Bold.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* 
@@ -146,7 +155,6 @@ body {
 /**********/
 /* Header */
 /**********/
-
 .header {
   background-color: #1c1c1c;
   display: flex;
@@ -173,7 +181,9 @@ body {
   font-size: 1.5rem;
 }
 
+/*********/
 /* Main */
+/********/
 .main {
   height: 100vh;
   display: grid;
@@ -182,24 +192,59 @@ body {
   align-items: center;
 }
 
-.main .my-books {
+.main .cards {
   height: 50%;
   width: 45%;
   border-radius: 2rem;
   background-color: #1c1c1c;
   border: 0.5px solid #00ffff;
   box-shadow: 0px 0px 5px #ff007f, 0px 0px 10px #ff007f, 0px 0px 20px #ff007f;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.my-books img {
+.cards img {
   height: 100%;
   width: 100%;
   border-radius: 2rem;
 }
 
+/***************/
+/* Text Cards */
+/**************/
+.text-cards {
+  display: none;
+  justify-content: center;
+  background-color: #ff007f;
+  font-family: "Exo Bold";
+  border-radius: 2rem;
+  height: 98%;
+  width: 98%;
+  opacity: .9;
+}
+
+.text-cards ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.text-cards li {
+  list-style-type: none;
+  font-size: 1.4rem;
+}
+
+.cards:hover .text-cards {
+  display: flex;
+  position: absolute;
+}
+
+/**********************/
+/* "Add Book" button" */
+/**********************/
 .main button {
   position: fixed;
   bottom: 5rem;
@@ -207,7 +252,6 @@ body {
   height: 6rem;
   width: 6rem;
   border-radius: 5rem;
-  /* border: 1px solid #ff007f; */
   border: none;
   font-size: 4rem;
   padding-bottom: 0.5rem;
