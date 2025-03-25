@@ -8,9 +8,9 @@ function Book(title, author, pageCount, completionStatus, image) {
     throw Error("You must use the 'new' keyword to create a new object.");
   }
 
-  this.title = title;
-  this.author = author;
-  this.pageCount = pageCount;
+  this.title = `"${title}"`;
+  this.author = "By: " + author;
+  this.pageCount = pageCount + " Pages";
   this.completionStatus = completionStatus;
   this.image = image;
   this.id = crypto.randomUUID();
@@ -24,24 +24,46 @@ function addBookToLibrary(title, author, pageCount, completionStatus, image) {
   myLibrary.push(newBook);
 }
 
+
 // Display Books - Loop Through Array
-const displayBooks = function displayBooks(myLibraryArr) {
-  const main = document.querySelector(".main");
-  myLibraryArr.forEach((book) => {
-
+function displayBooks(myLibraryArr) {
+  const main = document.querySelector(".main")
+  myLibraryArr.forEach(book => {
+   
+    // Create container divs
     const div = document.createElement("div");
-    div.classList.add("my-books");
-    
+    div.classList.add("cards");
+
+    // Add image to divs    
     const image = document.createElement("img");
-    bookImage = book.image;
-    image.src = bookImage;
-    div.appendChild(image)
+    image.src = book.image;
+    div.appendChild(image);
 
+    // Create Text Divs
+    const textCards = document.createElement("div");
+    textCards.classList.add("text-cards");
+
+    // Content Lists
+    const ul = document.createElement("ul");
+
+    const titleLi = document.createElement("li");
+    titleLi.innerText = book.title;
+
+    const authorLi = document.createElement("li");
+    authorLi.innerText = book.author;
+
+    const pageCountLi = document.createElement("li");
+    pageCountLi.innerText = book.pageCount;
+  
+    div.appendChild(textCards);
+    textCards.appendChild(ul)
+    ul.appendChild(titleLi);
+    ul.appendChild(authorLi);
+    ul.appendChild(pageCountLi);
+
+    // Append Main
     main.appendChild(div);
-  });
-
-  // Add hover effect to div with an overlaid "holographic" background
-  // Add book info on top of holographic background
+  })
 }
 
 // Call Default Books
@@ -50,5 +72,3 @@ addBookToLibrary("A Scanner Darkly", "Philip K. Dick", "304", "Unread", "./image
 addBookToLibrary("1984", "George Orwell", "328", "Read", "./images/1984-cover.png");
 
 displayBooks(myLibrary);
-
-// console.log(myLibrary)
