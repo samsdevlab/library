@@ -222,7 +222,7 @@ body {
   border-radius: 2rem;
   height: 98%;
   width: 98%;
-  opacity: .9;
+  opacity: 0.9;
 }
 
 .text-cards ul {
@@ -245,12 +245,12 @@ body {
 /**********************/
 /* "Add Book" button" */
 /**********************/
-.main button {
+.main .add-book-button {
   position: fixed;
-  bottom: 5rem;
-  right: 5rem;
-  height: 6rem;
-  width: 6rem;
+  bottom: 3rem;
+  right: 3rem;
+  height: 5rem;
+  width: 5rem;
   border-radius: 5rem;
   border: none;
   font-size: 4rem;
@@ -258,5 +258,59 @@ body {
   background-color: #1c1c1c;
   color: #00ffff;
   text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f;
-  box-shadow: 0px 0px 3rem #c0c0c0;
+  box-shadow: 0px 0px 1rem #c0c0c0;
+}
+
+/* Dialog Box and Form for "Add Book" Button */
+#dialog:open {
+  left: 30%;
+  top: 16.5%;
+  height: 80%;
+  width: 40%;
+  border-radius: 2rem;
+  border: none;
+  opacity: 0.95;
+  background-color: #ff007f;
+  font-family: "Exo Bold";
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#dialog::backdrop {
+  backdrop-filter: blur(1.5px);
+}
+
+.form input {
+  border-radius: 2rem;
+  border: none;
+  font-family: "Exo";
+  padding: 0.3rem 0.75rem;
+}
+
+.form input:focus {
+  outline: none;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-buttons {
+  background-color: #1c1c1c;
+  color: #00ffff;
+  font-size: 1rem;
+  height: 2rem;
+  width: 7rem;
+  border-radius: 2rem;
+  border: none;
+  margin-left: 0.7rem;
 }
