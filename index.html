@@ -17,42 +17,75 @@
         <dialog id="dialog">
           <form action="./nowhereMode" method="dialog" class="form">
             <div class="form-element">
-              <label for="title">Title</label>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                required
-                minlength="2"
-              />
+              <label for="title"
+                >Title<svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="title-asterisk"
+                >
+                  <path
+                    d="M12 4V20M19 7L5 17M5 7L19 17"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+              ></label>
+              <input type="text" id="title" name="title" required />
             </div>
             <div class="form-element">
-              <label for="author">Author</label>
-              <input
-                type="text"
-                id="author"
-                name="author"
-                required
-                minlength="2"
-              />
+              <label for="author"
+                >Author<svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="author-asterisk"
+                >
+                  <path
+                    d="M12 4V20M19 7L5 17M5 7L19 17"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+              ></label>
+              <input type="text" id="author" name="author" required />
             </div>
             <div class="form-element">
-              <label for="page-count">Number of Pages</label>
-              <input
-                type="text"
-                id="page-count"
-                name="page-count"
-                required
-                minlength="2"
-              />
+              <label for="page-count">
+                Page Count<svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="page-count-asterisk"
+                >
+                  <path
+                    d="M12 4V20M19 7L5 17M5 7L19 17"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </label>
+              <input type="number" id="page-count" name="page-count" required />
             </div>
             <div class="form-element">
               <label for="image-link">Cover Image Link</label>
               <input type="text" id="image-link" name="image-link" />
             </div>
-            <div class="form-element button-container"></div>
+            <div class="form-element">
+              <label for="description">Description</label>
+              <textarea id="description" name="description"></textarea>
+            </div>
+            <div class="form-element read-container">
+              <label for="read-checkbox">Read?</label>
+              <input type="checkbox" id="read-checkbox" name="read-checkbox" />
+            </div>
+            <div class="form-element form-button-container">
               <button class="form-buttons">Add</button>
-              <button class="form-buttons">Cancel</button> 
+              <button class="form-buttons">Cancel</button>
             </div>
           </form>
         </dialog>
