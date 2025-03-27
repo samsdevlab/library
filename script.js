@@ -77,8 +77,6 @@ cancelButton.addEventListener("click", (event) => {
 });
 
 submitButton.addEventListener("click", (event) => {
-  // Books are now being added but every time the program loops through the array, it makes a div for
-  // the current title as well as the previous titles, thereby duplicating the titles.
   event.preventDefault();
 
   const titleValue = document.getElementById("title").value;
@@ -99,26 +97,31 @@ submitButton.addEventListener("click", (event) => {
 });
 
 // Call Default Books
-// addBookToLibrary(
-//   "Brave New World",
-//   "Aldous Huxley",
-//   "288",
-//   "./images/brave-new-world-cover.jpg",
-//   "Read"
-// );
-// addBookToLibrary(
-//   "A Scanner Darkly",
-//   "Philip K. Dick",
-//   "304",
-//   "./images/a-scanner-darkly.jpg",
-//   "Unread"
-// );
-// addBookToLibrary(
-//   "1984",
-//   "George Orwell",
-//   "328",
-//   "./images/1984-cover.png",
-//   "Read"
-// );
-
-// displayBooks();
+addBookToLibrary(
+  "Brave New World",
+  "Aldous Huxley",
+  "288",
+  "./images/brave-new-world-cover.jpg",
+  "Read"
+);
+addBookToLibrary(
+  "A Scanner Darkly",
+  "Philip K. Dick",
+  "304",
+  "./images/a-scanner-darkly.jpg",
+  "Unread"
+);
+addBookToLibrary(
+  "1984",
+  "George Orwell",
+  "328",
+  "./images/1984-cover.png",
+  "Read"
+);
+addBookToLibrary(
+  "Farenheit 451",
+  "Ray Bradbury",
+  "249",
+  "./images/farenheit-451.webp",
+  "Read"
+);
