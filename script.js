@@ -2,13 +2,13 @@
 const myLibrary = []; // book objects go here
 
 // The Constructor
-function Book(title, author, pageCount, completionStatus, image) {
+function Book(title, author, pageCount, image, completionStatus) {
   // the constructor...
   if (!new.target) {
     throw Error("You must use the 'new' keyword to create a new object.");
   }
 
-  this.title = `"${title}"`;
+  this.title = `${title}`;
   this.author = "By: " + author;
   this.pageCount = pageCount + " Pages";
   this.completionStatus = completionStatus;
@@ -17,81 +17,108 @@ function Book(title, author, pageCount, completionStatus, image) {
 }
 
 // Create and Store Book
-function addBookToLibrary(title, author, pageCount, completionStatus, image) {
+function addBookToLibrary(title, author, pageCount, image, completionStatus) {
   // take params, create a book then store it in the array
-  let newBook = new Book(title, author, pageCount, completionStatus, image);
+  let newBook = new Book(title, author, pageCount, image, completionStatus);
   myLibrary.push(newBook);
+  displayBooks();
 }
 
 // Display Books - Loop Through Array
-function displayBooks(myLibraryArr) {
+function displayBooks() {
   const main = document.querySelector(".main");
-  myLibraryArr.forEach((book) => {
-    // Create container divs
-    const div = document.createElement("div");
-    div.classList.add("cards");
 
-    // Add image to divs
-    const image = document.createElement("img");
-    image.src = book.image;
-    div.appendChild(image);
+  myLibrary.forEach((book) => {
+    const last = myLibrary[myLibrary.length - 1];
+    if (book === last) {
+      // Create elements
+      const div = document.createElement("div");
+      const textCards = document.createElement("div");
+      const image = document.createElement("img");
+      const ul = document.createElement("ul");
+      const titleLi = document.createElement("li");
+      const authorLi = document.createElement("li");
+      const pageCountLi = document.createElement("li");
 
-    // Create Text Divs
-    const textCards = document.createElement("div");
-    textCards.classList.add("text-cards");
+      // Assign Classes & Attributes
+      div.classList.add("cards");
+      textCards.classList.add("text-cards");
+      image.src = book.image;
 
-    // Content Lists
-    const ul = document.createElement("ul");
+      // Add Content
+      titleLi.innerText = book.title;
+      authorLi.innerText = book.author;
+      pageCountLi.innerText = book.pageCount;
 
-    const titleLi = document.createElement("li");
-    titleLi.innerText = book.title;
-
-    const authorLi = document.createElement("li");
-    authorLi.innerText = book.author;
-
-    const pageCountLi = document.createElement("li");
-    pageCountLi.innerText = book.pageCount;
-
-    div.appendChild(textCards);
-    textCards.appendChild(ul);
-    ul.appendChild(titleLi);
-    ul.appendChild(authorLi);
-    ul.appendChild(pageCountLi);
-
-    // Append Main
-    main.appendChild(div);
+      // Append Children
+      div.appendChild(textCards);
+      div.appendChild(image);
+      textCards.appendChild(ul);
+      ul.appendChild(titleLi);
+      ul.appendChild(authorLi);
+      ul.appendChild(pageCountLi);
+      main.appendChild(div);
+    }
   });
 }
 
 // Interact with Dialog
-const dialog = document.querySelector("dialog");
 const addBookButton = document.querySelector(".add-book-button");
+const submitButton = document.querySelector(".submit-button");
+const cancelButton = document.querySelector(".cancel-button");
 
 addBookButton.addEventListener("click", () => {
   dialog.showModal();
 });
 
-// Call Default Books
-addBookToLibrary(
-  "Brave New World",
-  "Aldous Huxley",
-  "288",
-  "Read",
-  "./images/brave-new-world-cover.jpg"
-);
-addBookToLibrary(
-  "A Scanner Darkly",
-  "Philip K. Dick",
-  "304",
-  "Unread",
-  "./images/a-scanner-darkly.jpg"
-);
-addBookToLibrary(
-  "1984",
-  "George Orwell",
-  "328",
-  "Read",
-  "./images/1984-cover.png"
-);
+cancelButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  dialog.close();
+});
 
-displayBooks(myLibrary);
+submitButton.addEventListener("click", (event) => {
+  // Books are now being added but every time the program loops through the array, it makes a div for
+  // the current title as well as the previous titles, thereby duplicating the titles.
+  event.preventDefault();
+
+  const titleValue = document.getElementById("title").value;
+  const authorValue = document.getElementById("author").value;
+  const pageCountValue = document.getElementById("page-count").value;
+  const imageValue = document.getElementById("image-link").value;
+  const completionStatusValue = document.getElementById("read-checkbox");
+
+  addBookToLibrary(
+    titleValue,
+    authorValue,
+    pageCountValue,
+    imageValue,
+    completionStatusValue
+  );
+
+  dialog.close();
+});
+
+// Call Default Books
+// addBookToLibrary(
+//   "Brave New World",
+//   "Aldous Huxley",
+//   "288",
+//   "./images/brave-new-world-cover.jpg",
+//   "Read"
+// );
+// addBookToLibrary(
+//   "A Scanner Darkly",
+//   "Philip K. Dick",
+//   "304",
+//   "./images/a-scanner-darkly.jpg",
+//   "Unread"
+// );
+// addBookToLibrary(
+//   "1984",
+//   "George Orwell",
+//   "328",
+//   "./images/1984-cover.png",
+//   "Read"
+// );
+
+// displayBooks();
