@@ -32,7 +32,13 @@
                     stroke-linejoin="round"
                   /></svg
               ></label>
-              <input type="text" id="title" name="title" required />
+              <input
+                type="text"
+                id="title"
+                name="title"
+                value="Shantaram"
+                required
+              />
             </div>
             <div class="form-element">
               <label for="author"
@@ -50,7 +56,13 @@
                     stroke-linejoin="round"
                   /></svg
               ></label>
-              <input type="text" id="author" name="author" required />
+              <input
+                type="text"
+                id="author"
+                name="author"
+                value="Gregory David Roberts"
+                required
+              />
             </div>
             <div class="form-element">
               <label for="page-count">
@@ -69,23 +81,36 @@
                   />
                 </svg>
               </label>
-              <input type="number" id="page-count" name="page-count" required />
+              <input
+                type="number"
+                id="page-count"
+                name="page-count"
+                value="1000"
+                required
+              />
             </div>
             <div class="form-element">
               <label for="image-link">Cover Image Link</label>
-              <input type="text" id="image-link" name="image-link" />
+              <input
+                type="url"
+                id="image-link"
+                name="image-link"
+                value="https://m.media-amazon.com/images/I/71BZb4TogSL.jpg"
+              />
             </div>
             <div class="form-element">
               <label for="description">Description</label>
-              <textarea id="description" name="description"></textarea>
+              <textarea id="description" name="description" maxlength="60">
+Lin navigates the underworld of Bombay looking for love.</textarea
+              >
             </div>
             <div class="form-element read-container">
               <label for="read-checkbox">Read?</label>
               <input type="checkbox" id="read-checkbox" name="read-checkbox" />
             </div>
             <div class="form-element form-button-container">
-              <button class="form-buttons">Add</button>
-              <button class="form-buttons">Cancel</button>
+              <button class="form-buttons submit-button">Submit</button>
+              <button class="form-buttons cancel-button">Cancel</button>
             </div>
           </form>
         </dialog>
