@@ -9,7 +9,7 @@ function Book(title, author, pageCount, image, description, completionStatus) {
   }
 
   this.title = `"${title}"`;
-  this.author = "By: " + author;
+  this.author = "By " + author;
   this.pageCount = pageCount + " Pages";
   this.image = image;
   this.description = description;
@@ -54,29 +54,32 @@ function displayBooks() {
       const titleLi = document.createElement("li");
       const authorLi = document.createElement("li");
       const pageCountLi = document.createElement("li");
-      const descriptionLi = document.createElement("li");
-      const completionStatus = document.createElement("li");
-
-      // if/else statements:
-      // - description only needs to be created if the user actually enters a description.
-      // - completionStatus needs to be created regardless. If checkbox is not checked in the form, completionStatus will need to be set to "unread" rather than "undefined"
+      const completionStatusLi = document.createElement("li");
 
       // Assign Classes & Attributes
       div.classList.add("cards");
       textCards.classList.add("text-cards");
 
-      if (book.image === "") {
+      // Exceptions
+      if (last.image === "") {
         image.src = "./images/dystopian-library.jpg";
       } else {
         image.src = book.image;
       }
 
-      // Add Content
+      if (
+        last.completionStatus === "Checked" ||
+        last.completionStatus.checked
+      ) {
+        completionStatusLi.innerText = "Read";
+      } else {
+        completionStatusLi.innerText = "Unread";
+      }
+
+      // Add Content to Required Input Fields
       titleLi.innerText = book.title;
       authorLi.innerText = book.author;
       pageCountLi.innerText = book.pageCount;
-      descriptionLi.innerText = book.description;
-      completionStatus.innerText = book.completionStatus;
 
       // Append Children
       div.appendChild(textCards);
@@ -85,9 +88,14 @@ function displayBooks() {
       ul.appendChild(titleLi);
       ul.appendChild(authorLi);
       ul.appendChild(pageCountLi);
-      ul.appendChild(descriptionLi);
-      ul.appendChild(completionStatus);
+
+      ul.appendChild(completionStatusLi);
       main.appendChild(div);
+      if (last.description !== " " && last.description !== "") {
+        const descriptionLi = document.createElement("li");
+        descriptionLi.innerText = book.description;
+        ul.appendChild(descriptionLi);
+      }
     }
   });
 }
@@ -133,28 +141,31 @@ addBookToLibrary(
   "Brave New World",
   "Aldous Huxley",
   "288",
-  "./images/brave-new-world-cover.jpg"
-  // "A searching vision of an unequal, technologically-advanced future.",
-  // "Read"
+  "./images/brave-new-world-cover.jpg",
+  "In a hedonistic utopia, control and conditioning erase free will.",
+  "Checked"
 );
 addBookToLibrary(
   "A Scanner Darkly",
   "Philip K. Dick",
   "304",
-  "./images/a-scanner-darkly.jpg"
-  // "Unread"
+  "./images/a-scanner-darkly.jpg",
+  "An addict cop loses himself in a world of surveillance and deceit.",
+  "Checked"
 );
 addBookToLibrary(
   "1984",
   "George Orwell",
   "328",
-  "./images/1984-cover.png"
-  // "Read"
+  "./images/1984-cover.png",
+  "A man rebels against a totalitarian regime that watches his every move.",
+  "Checked"
 );
 addBookToLibrary(
   "Farenheit 451",
   "Ray Bradbury",
   "249",
-  "./images/farenheit-451.webp"
-  // "Read"
+  "./images/farenheit-451.webp",
+  "In a future without books, a fireman questions his duty to burn them.",
+  "Checked"
 );
