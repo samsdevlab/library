@@ -236,6 +236,35 @@ body {
   border-radius: 2rem;
 }
 
+/*****************/
+/* Card Buttons */
+/****************/
+.card-button-div {
+  position: absolute;
+  z-index: 1;
+  top: 0.3rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.2rem;
+}
+.card-buttons {
+  height: 1.75rem;
+  width: 1.75rem;
+  background-color: #1c1c1c;
+  border: none;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-buttons > img {
+  filter: invert(15%) sepia(65%) saturate(7489%) hue-rotate(322deg)
+    brightness(98%) contrast(107%);
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
 /***************/
 /* Text Cards */
 /**************/
