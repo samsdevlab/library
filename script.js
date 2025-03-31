@@ -55,10 +55,21 @@ function displayBooks() {
       const authorLi = document.createElement("li");
       const pageCountLi = document.createElement("li");
       const completionStatusLi = document.createElement("li");
+      const cardButtonDiv = document.createElement("div");
+      const deleteButton = document.createElement("button");
+      const completionStatusButton = document.createElement("button");
+      const trashcanImg = document.createElement("img");
+      const eyeImg = document.createElement("img");
 
       // Assign Classes & Attributes
       div.classList.add("cards");
       textCards.classList.add("text-cards");
+      cardButtonDiv.classList.add("card-button-div");
+      deleteButton.classList.add("card-buttons", "delete-button");
+      completionStatusButton.classList.add(
+        "card-buttons",
+        "completion-status-button"
+      );
 
       // Exceptions
       if (last.image === "") {
@@ -80,8 +91,17 @@ function displayBooks() {
       titleLi.innerText = book.title;
       authorLi.innerText = book.author;
       pageCountLi.innerText = book.pageCount;
+      trashcanImg.src = "./images/trashcan.png";
+      eyeImg.src = "./images/eye.png";
+
+      // Start here on Monday 04/01 - figure out how to place these SVGs in the buttons, then program the buttons to both delete the entire container and toggle read/unread.
 
       // Append Children
+      div.appendChild(cardButtonDiv);
+      deleteButton.appendChild(trashcanImg);
+      completionStatusButton.appendChild(eyeImg);
+      cardButtonDiv.appendChild(deleteButton);
+      cardButtonDiv.appendChild(completionStatusButton);
       div.appendChild(textCards);
       div.appendChild(image);
       textCards.appendChild(ul);
