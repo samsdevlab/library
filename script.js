@@ -39,15 +39,28 @@ function addBookToLibrary(
   displayBooks();
 }
 
+Book.prototype.toggleReadStatus = function (completionStatusLi) {
+  if (this.completionStatus === "Read") {
+    this.completionStatus = "Unread";
+  } else if (this.completionStatus === "Unread") {
+    this.completionStatus = "Read";
+  }
+
+  if (completionStatusLi.textContent === "Read") {
+    completionStatusLi.textContent = "Unread";
+  } else if (completionStatusLi.textContent === "Unread") {
+    completionStatusLi.textContent = "Read";
+  }
+};
+
 // Display Books - Loop Through Array
 function displayBooks() {
   const main = document.querySelector(".main");
-
   myLibrary.forEach((book) => {
     const last = myLibrary[myLibrary.length - 1];
     if (book === last) {
       // Create elements
-      const div = document.createElement("div");
+      const cardDiv = document.createElement("div");
       const textCards = document.createElement("div");
       const image = document.createElement("img");
       const ul = document.createElement("ul");
@@ -60,9 +73,11 @@ function displayBooks() {
       const completionStatusButton = document.createElement("button");
       const trashcanImg = document.createElement("img");
       const eyeImg = document.createElement("img");
+      const randomId = last.id;
 
       // Assign Classes & Attributes
-      div.classList.add("cards");
+      cardDiv.classList.add("cards");
+      cardDiv.dataset.randomId = randomId;
       textCards.classList.add("text-cards");
       cardButtonDiv.classList.add("card-button-div");
       deleteButton.classList.add("card-buttons", "delete-button");
@@ -71,6 +86,21 @@ function displayBooks() {
         "completion-status-button"
       );
 
+      // Add Event Listeners
+      deleteButton.addEventListener("click", () => {
+        const cardDiv = deleteButton.closest(".cards");
+        const bookId = cardDiv.dataset.randomId;
+
+        const bookIndex = myLibrary.findIndex((book) => book.id === bookId);
+        myLibrary.splice(bookIndex, 1);
+
+        cardDiv.remove();
+      });
+
+      completionStatusButton.addEventListener("click", () => {
+        book.toggleReadStatus(completionStatusLi);
+      });
+
       // Exceptions
       if (last.image === "") {
         image.src = "./images/dystopian-library.jpg";
@@ -78,10 +108,7 @@ function displayBooks() {
         image.src = book.image;
       }
 
-      if (
-        last.completionStatus === "Checked" ||
-        last.completionStatus.checked
-      ) {
+      if (last.completionStatus === "Read" || last.completionStatus.checked) {
         completionStatusLi.innerText = "Read";
       } else {
         completionStatusLi.innerText = "Unread";
@@ -94,23 +121,20 @@ function displayBooks() {
       trashcanImg.src = "./images/trashcan.png";
       eyeImg.src = "./images/eye.png";
 
-      // Start here on Monday 04/01 - figure out how to place these SVGs in the buttons, then program the buttons to both delete the entire container and toggle read/unread.
-
       // Append Children
-      div.appendChild(cardButtonDiv);
+      cardDiv.appendChild(cardButtonDiv);
       deleteButton.appendChild(trashcanImg);
       completionStatusButton.appendChild(eyeImg);
       cardButtonDiv.appendChild(deleteButton);
       cardButtonDiv.appendChild(completionStatusButton);
-      div.appendChild(textCards);
-      div.appendChild(image);
+      cardDiv.appendChild(textCards);
+      cardDiv.appendChild(image);
       textCards.appendChild(ul);
       ul.appendChild(titleLi);
       ul.appendChild(authorLi);
       ul.appendChild(pageCountLi);
-
       ul.appendChild(completionStatusLi);
-      main.appendChild(div);
+      main.appendChild(cardDiv);
       if (last.description !== " " && last.description !== "") {
         const descriptionLi = document.createElement("li");
         descriptionLi.innerText = book.description;
@@ -120,7 +144,6 @@ function displayBooks() {
   });
 }
 
-// Interact with Dialog
 const addBookButton = document.querySelector(".add-book-button");
 const submitButton = document.querySelector(".submit-button");
 const cancelButton = document.querySelector(".cancel-button");
@@ -142,7 +165,8 @@ submitButton.addEventListener("click", (event) => {
   const pageCount = document.getElementById("page-count").value;
   const image = document.getElementById("image-link").value;
   const description = document.getElementById("description").value;
-  const completionStatus = document.getElementById("read-checkbox");
+  const readStatus = document.getElementById("read-checkbox");
+  const completionStatus = readStatus.checked === true ? "Read" : "Unread";
 
   addBookToLibrary(
     title,
@@ -163,7 +187,7 @@ addBookToLibrary(
   "288",
   "./images/brave-new-world-cover.jpg",
   "In a hedonistic utopia, control and conditioning erase free will.",
-  "Checked"
+  "Read"
 );
 addBookToLibrary(
   "A Scanner Darkly",
@@ -171,7 +195,7 @@ addBookToLibrary(
   "304",
   "./images/a-scanner-darkly.jpg",
   "An addict cop loses himself in a world of surveillance and deceit.",
-  "Checked"
+  "Unread"
 );
 addBookToLibrary(
   "1984",
@@ -179,7 +203,7 @@ addBookToLibrary(
   "328",
   "./images/1984-cover.png",
   "A man rebels against a totalitarian regime that watches his every move.",
-  "Checked"
+  "Read"
 );
 addBookToLibrary(
   "Farenheit 451",
@@ -187,5 +211,5 @@ addBookToLibrary(
   "249",
   "./images/farenheit-451.webp",
   "In a future without books, a fireman questions his duty to burn them.",
-  "Checked"
+  "Read"
 );
