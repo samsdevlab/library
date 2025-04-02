@@ -163,7 +163,9 @@ cancelButton.addEventListener("click", (event) => {
   dialog.close();
 });
 
-submitButton.addEventListener("click", (event) => {
+const form = document.querySelector(".form"); // Reference the form element
+
+form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const title = document.getElementById("title").value;
@@ -182,6 +184,9 @@ submitButton.addEventListener("click", (event) => {
     description,
     completionStatus
   );
+
+  // Clear the form inputs
+  form.reset();
 
   dialog.close();
 });
@@ -221,7 +226,4 @@ addBookToLibrary(
 );
 
 // Checklist Before Publishing
-// • Remove code that has been commented out
-// • Add alt tags to images
-// • Test on other browsers
-// • Include font fallbacks
+// • Fix form - there is a bug that allows users to surpass the required fields. Probably due to the backend include "", By, and Pages. I think this is the issue
