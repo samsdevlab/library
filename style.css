@@ -257,6 +257,7 @@ body {
   padding-right: 2rem;
   background-color: #ff007f;
   font-family: "Exo Bold", Arial, Helvetica, sans-serif;
+  color: #1c1c1c;
   height: 80%;
   width: 100%;
   opacity: 0.95;
@@ -312,6 +313,7 @@ body {
   border: none;
   background-color: #ff007f;
   font-family: "Exo Bold", Arial, Helvetica, sans-serif;
+  color: #1c1c1c;
   font-size: 1rem;
   display: flex;
   justify-content: center;
@@ -332,6 +334,7 @@ body {
   border-radius: 1rem;
   border: none;
   font-family: "Exo Medium Italic", Helvetica Italic;
+  color: #1c1c1c;
   background-color: white;
   padding: 0.3rem 0.75rem;
 }
