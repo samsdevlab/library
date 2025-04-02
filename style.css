@@ -103,6 +103,8 @@ select {
   font: inherit;
 }
 
+/* Project Below */
+
 @font-face {
   font-family: "Audiowide";
   src: url("./fonts/Audiowide-Regular.woff2") format("woff2"),
@@ -138,23 +140,6 @@ select {
   font-style: normal;
   font-display: swap;
 }
-
-/* 
-Oh, now that’s a cool direction! If you’re going for a Minority Report-inspired futuristic library, you’ll want a sleek but high-energy cyber-tech feel—something that’s clean but not sterile.
-
-Here’s a color palette idea based on that:
-
-Electric Cyan – #00FFFF (glowing neon interface elements)
-Deep Navy Blue – #0A1F44 (cool, high-tech backdrop)
-Dark Charcoal Gray – #1C1C1C (futuristic base tone)
-Holographic Silver – #C0C0C0 (reflective, high-tech sheen)
-Pulsing Magenta – #FF007F (vibrant contrast, like neon UI elements)
-
-Header: Dark Charcoal Gray (#1C1C1C) → Solid, grounded foundation for the title
-Main Content: Deep Navy Blue (#0A1F44) → Still dark but slightly different for contrast
-Text & UI Accents: Electric Cyan & Pulsing Magenta → Pop against the dark backgrounds
-Borders/Dividers: Holographic Silver → Subtle sheen without overpowering
-*/
 
 body {
   background-color: #0a1f44;
@@ -192,7 +177,7 @@ body {
 .header h1,
 .header h2 {
   color: #00ffff;
-  font-family: "Audiowide";
+  font-family: "Audiowide", Impact, Haettenschweiler, sans-serif;
   text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 20px #ff007f,
     0 0 40px #ff007f;
 }
@@ -248,8 +233,8 @@ body {
   gap: 0.2rem;
 }
 .card-buttons {
-  height: 1.75rem;
-  width: 1.75rem;
+  height: 1.8rem;
+  width: 1.8rem;
   background-color: #1c1c1c;
   border: none;
   border-radius: 1rem;
@@ -274,7 +259,7 @@ body {
   padding-left: 1rem;
   padding-right: 2rem;
   background-color: #ff007f;
-  font-family: "Exo Bold";
+  font-family: "Exo Bold", Arial, Helvetica, sans-serif;
   height: 80%;
   width: 100%;
   opacity: 0.95;
@@ -329,7 +314,7 @@ body {
   border-radius: 2rem;
   border: none;
   background-color: #ff007f;
-  font-family: "Exo Bold";
+  font-family: "Exo Bold", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   display: flex;
   justify-content: center;
@@ -349,7 +334,7 @@ body {
 #description {
   border-radius: 1rem;
   border: none;
-  font-family: "Exo Medium Italic";
+  font-family: "Exo Medium Italic", Helvetica Italic;
   background-color: white;
   padding: 0.3rem 0.75rem;
 }
