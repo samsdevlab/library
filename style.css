@@ -182,7 +182,7 @@ body {
   padding-bottom: 2rem;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .header h1 {
@@ -391,26 +391,6 @@ body {
   align-items: center;
   gap: 0.5rem;
 }
-
-/* Customizing Checkbox */
-/* #read-checkbox {
-  appearance: none;
-  width: 1rem;
-  height: 1rem;
-  position: relative;
-}
-
-#read-checkbox::before {
-  font-size: 0.8rem;
-  position: absolute;
-  right: 6px;
-  top: 0.1px;
-}
-
-#read-checkbox:checked::before {
-  content: "✔";
-  color: black;
-} */
 
 /* Form Buttons */
 .form-button-container {
