@@ -71,7 +71,6 @@ function displayBooks() {
       const cardButtonDiv = document.createElement("div");
       const completionStatusButton = document.createElement("button");
       const deleteButton = document.createElement("button");
-
       const trashcanImg = document.createElement("img");
       const eyeImg = document.createElement("img");
       const randomId = last.id;
@@ -105,8 +104,10 @@ function displayBooks() {
       // Exceptions
       if (last.image === "") {
         image.src = "./images/dystopian-library.jpg";
+        image.alt = "Default image of futuristic, dystopian library";
       } else {
         image.src = book.image;
+        image.alt = "Image of book's title cover";
       }
 
       if (last.completionStatus === "Read" || last.completionStatus.checked) {
@@ -119,8 +120,12 @@ function displayBooks() {
       titleLi.innerText = book.title;
       authorLi.innerText = book.author;
       pageCountLi.innerText = book.pageCount;
+
       trashcanImg.src = "./images/trashcan.png";
+      trashcanImg.alt = "Trashcan - this button deletes the card";
       eyeImg.src = "./images/eye.png";
+      eyeImg.alt =
+        "Eyeball image - this button toggles the book's status between 'Read' and 'Unread";
 
       // Append Children
       cardDiv.appendChild(cardButtonDiv);
@@ -214,3 +219,9 @@ addBookToLibrary(
   "In a future without books, a fireman questions his duty to burn them.",
   "Read"
 );
+
+// Checklist Before Publishing
+// • Remove code that has been commented out
+// • Add alt tags to images
+// • Test on other browsers
+// • Include font fallbacks
