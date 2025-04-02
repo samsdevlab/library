@@ -69,8 +69,9 @@ function displayBooks() {
       const pageCountLi = document.createElement("li");
       const completionStatusLi = document.createElement("li");
       const cardButtonDiv = document.createElement("div");
-      const deleteButton = document.createElement("button");
       const completionStatusButton = document.createElement("button");
+      const deleteButton = document.createElement("button");
+
       const trashcanImg = document.createElement("img");
       const eyeImg = document.createElement("img");
       const randomId = last.id;
@@ -80,11 +81,11 @@ function displayBooks() {
       cardDiv.dataset.randomId = randomId;
       textCards.classList.add("text-cards");
       cardButtonDiv.classList.add("card-button-div");
-      deleteButton.classList.add("card-buttons", "delete-button");
       completionStatusButton.classList.add(
         "card-buttons",
         "completion-status-button"
       );
+      deleteButton.classList.add("card-buttons", "delete-button");
 
       // Add Event Listeners
       deleteButton.addEventListener("click", () => {
@@ -125,8 +126,8 @@ function displayBooks() {
       cardDiv.appendChild(cardButtonDiv);
       deleteButton.appendChild(trashcanImg);
       completionStatusButton.appendChild(eyeImg);
-      cardButtonDiv.appendChild(deleteButton);
       cardButtonDiv.appendChild(completionStatusButton);
+      cardButtonDiv.appendChild(deleteButton);
       cardDiv.appendChild(textCards);
       cardDiv.appendChild(image);
       textCards.appendChild(ul);
